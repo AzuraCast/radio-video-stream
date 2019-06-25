@@ -20,7 +20,11 @@ RUN adduser --home /var/azuracast --disabled-password --gecos "" azuracast \
     && echo 'azuracast ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Copy example files.
-COPY . /var/azuracast/videostream
+WORKDIR /var/azuracast/videostream
+
+COPY . .
+
+RUN chmod a+x broadcast.sh
 
 ENV VS_VBR="1500k" \
     VS_FPS="30" \
