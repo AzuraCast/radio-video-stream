@@ -1,10 +1,14 @@
 # AzuraCast Radio Video Stream
 
-This is an example script that can be attached to AzuraCast and will allow you to stream your radio (alongside a video loop) to an RTMP destination, such as YouTube, etc.
+This is an example script that can be attached to AzuraCast and will allow you to stream your radio (alongside a video loop) to an RTMP destination, such as YouTube, etc. while writing the currently playing song across the screen dynamically.
 
 ## Using This Project
 
 This guide assumes you have already completed a Docker installation of AzuraCast and installed it in the recommended directory (`/var/azuracast`). If you have installed it elsewhere, modify your directories below accordingly.
+
+### Update your AzuraCast Installation
+
+This repository depends on a feature (atomically written nowplaying.txt files associated with each station) that only exists in AzuraCast versions released after June 23, 2019. Make sure you are on the latest version of AzuraCast before continuing.
 
 ### Clone the Repository
 
