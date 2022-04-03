@@ -1,3 +1,5 @@
+**Update: As of the newer versions of AzuraCast that use Liquidsoap version 2.0.0 or newer, you no longer need to use a project like this to broadcast a video stream with a looping video and dynamic Now Playing text to listeners, i.e. on YouTube or elsewhere. See [this Gist](https://gist.github.com/SlvrEagle23/5dbfb4dbc1846055c9ab07a7c685899c) for instructions on how to set the same functionality up entirely inside AzuraCast.**
+
 # AzuraCast Radio Video Stream
 
 This is an example script that can be attached to AzuraCast and will allow you to stream your radio (alongside a video loop) to an RTMP destination, such as YouTube, etc. while writing the currently playing song across the screen dynamically.
