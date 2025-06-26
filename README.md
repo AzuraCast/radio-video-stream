@@ -1,40 +1,38 @@
-**Update: As of the newer versions of AzuraCast that use Liquidsoap version 2.0.0 or newer, you no longer need to use a project like this to broadcast a video stream with a looping video and dynamic Now Playing text to listeners, i.e. on YouTube or elsewhere. See [this Gist](https://gist.github.com/BusterNeece/5dbfb4dbc1846055c9ab07a7c685899c) for instructions on how to set the same functionality up entirely inside AzuraCast.**
-
 # AzuraCast Radio Video Stream
 
-This is an example script that can be attached to AzuraCast and will allow you to stream your radio (alongside a video loop) to an RTMP destination, such as YouTube, etc. while writing the currently playing song across the screen dynamically.
+This is an example Liquidsoap script that can be included in AzuraCast that will allow you to stream your radio (alongside a video loop) to an RTMP destination, such as YouTube, etc. while writing the currently playing song across the screen dynamically.
 
-## Using This Project
+Unlike previous versions of this project, this version does not require Docker modification and works within an existing AzuraCast installation.
 
-This guide assumes you have already completed a Docker installation of AzuraCast and installed it in the recommended directory (`/var/azuracast`). If you have installed it elsewhere, modify your directories below accordingly.
+**If you were using an older version of this project (with standalone Docker Compose configuration), it is no longer necessary to do this in order to keep a video stream running. For a majority of cases, you can remove the extra Docker configuration and replace it with this version of the project, which works entirely within a stock AzuraCast installation.**
 
-### Update your AzuraCast Installation
+## Using This Script
 
-This repository depends on a feature (atomically written nowplaying.txt files associated with each station) that only exists in AzuraCast versions released after June 23, 2019. Make sure you are on the latest version of AzuraCast before continuing.
+To use this script, you must be running at least AzuraCast 0.19.0 or a later Rolling Release version.
 
-### Clone the Repository
+### Dependencies
 
-Run the following commands on your host to clone this repository:
+Before using this script:
+ - Upload a video file to a folder under your station's media library (in the example below, named "videostream"); a sample video loop is included in this repository for reference.
+ - Choose a font to display Now Playing data and upload a TTF version of that font to the same folder.
 
-```bash
-mkdir -p /tmp/ac_videostream
-git clone https://github.com/AzuraCast/radio-video-stream.git /tmp/ac_videostream
-mv /tmp/ac_videostream/videostream /var/azuracast/videostream
-mv /tmp/ac_videostream/docker-compose.override.yml /var/azuracast/docker-compose.override.yml
-```
+You will also need:
+ - An RTMP broadcast key from the service you wish to stream to (i.e. Twitch, YouTube)
 
-### Customize Environment Variables
+### Using This Script
 
-This repository includes a default video and example text, but you will likely want to customize the environment variables to suit your server. You will also **need to provide your RTMP (YouTube, etc) credentials for the video stream to work**.
+To use this script on your station:
 
-The environment variables are listed in `/var/azuracast/docker-compose.override.yml`. Open this file in your editor of choice and customize it before building and running the container.
+- Log in to AzuraCast and click "Manage" next to your station.
+- From the left sidebar, click "Broadcasting", then "Edit Liquidsoap Configuration".
+- Scroll to the bottom-most open text area.
+- Paste the contents of the [./video_stream.liq](video_stream.liq) file into that text area.
+- Customize the station directory, RTMP key and font specifications.
+- Click "Save Changes" at the bottom of the page.
+- Click the yellow notice that pops up at the top left of the page to restart broadcasting, then click "Restart Broadcasting" on the next page.
 
-### Build and Start Container
+## Project Support
 
-To build and start the new Docker container, you can run:
+This project is provided as-is with no warranty. We do not actively support this project; it's intended as an example for power users looking to extend AzuraCast with extra functionality.
 
-```bash
-cd /var/azuracast
-docker-compose build videostream
-docker-compose up -d
-```
+Pull requests to improve the script are welcome. Other support can be obtained by creating an Issue or Discussion on this repository.
