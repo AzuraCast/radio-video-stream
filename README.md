@@ -26,7 +26,7 @@ To use this script on your station:
 - Log in to AzuraCast and click "Manage" next to your station.
 - From the left sidebar, click "Broadcasting", then "Edit Liquidsoap Configuration".
 - Scroll to the bottom-most open text area.
-- Paste the contents of the [`video_stream.liq`](./video_stream.liq) file into that text area.
+- Paste the contents of the [`video_stream.liq`](./video_stream.liq) file into that text area. (In newer versions of AzuraCast with the "Import Configuration" button on this page, you can just upload the `video_stream.liq` file and it will be set in the correct location.)
 - Customize the station directory, RTMP key and font specifications.
 - Click "Save Changes" at the bottom of the page.
 - Click the yellow notice that pops up at the top left of the page to restart broadcasting, then click "Restart Broadcasting" on the next page.
