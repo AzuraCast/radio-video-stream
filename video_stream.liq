@@ -1,3 +1,5 @@
+# Custom Configuration (Specified in Station Profile)
+# startcustomconfig(custom_config_bottom)
 #
 # VIDEO STREAM
 #
@@ -76,3 +78,4 @@ enc =
 output.youtube.live.hls(
   key=youtube_key, fallible=true, encoder=enc, videostream
 )
+# endcustomconfig(custom_config_bottom)
